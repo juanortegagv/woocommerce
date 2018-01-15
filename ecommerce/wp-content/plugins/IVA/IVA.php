@@ -9,7 +9,7 @@ Author URI: https://github.com/juanortegagv/woocommerce
 Copyright: 2018- Juan Ortega
 */
 
-add_filter("","iva_porcentaje");
+add_action("","iva_porcentaje");
 
 function iva_porcentaje($monto){
 	$total = 0;
@@ -18,5 +18,7 @@ function iva_porcentaje($monto){
 		$total = ($monto * 0.07)+$monto;
 	}else{
 		$total = ($monto * 0.09)+$monto;
-	}	
+	}
+
+	return $total;	
 }

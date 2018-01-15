@@ -145,15 +145,17 @@ class WC_Tax {
 				$the_price = $price;
 				$the_rate  = $the_rate / $compound_tax_rate;
 			} else {
-				$the_price = $non_compound_price;
-				$the_rate  = $the_rate / $regular_tax_rate;
+				$the_price = $non_compound_price;				
+				$rate=0.12;
+				$net_price       = $price - ( $rate * $the_price );
+				$tax_amount      = $price - $net_price;
 			}
-
-			$net_price       = $price - ( $the_rate * $the_price );
-			$tax_amount      = $price - $net_price;
+			}	
+					
+			
 			$taxes[ $key ]   += apply_filters( 'woocommerce_price_inc_tax_amount', $tax_amount, $key, $rate, $price );
-		}
-
+		
+		
 		return $taxes;
 	}
 
